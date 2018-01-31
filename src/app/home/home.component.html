@@ -1,45 +1,43 @@
 <body>
-
-  <div class="row">
+  <div class="row" style="margin: 30px">
      <div class="col-lg-3">
-
-      <form>
+      <form >
         <div class="form-group">
           <div class="input-group">
-            <label>Select a Date: </label>
+            <label style="margin-right: 25px">Select a Date: </label>
             <input class="form-control" placeholder="yyyy-mm-dd" name="d"
                   [(ngModel)]="model" [ngModelOptions]="{standalone: true}"
-                   ngbDatepicker #d="ngbDatepicker">
-              <div class="input-group-addon" (click)="d.toggle()" >
-                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                   ngbDatepicker #d="ngbDatepicker" required/>
+              <div class="input-group-addon" (click)="d.toggle()">
+                <img src="img/calendar-icon.svg" aria-hidden="true" style="width: 1.2rem; height: 1rem; cursor: pointer;">
               </div>
           </div>
         </div>
 
         <div class="form-group">
           <div class="input-group">
-            <label>Select currency: </label>
+            <label style="margin-right: 10px">Select currency: </label>
             <input type="text" class="form-control"
                    [(ngModel)]="model1" [ngModelOptions]="{standalone: true}"
                    [ngbTypeahead]="search" [resultFormatter]="formatter" [inputFormatter]="formatter" />
           </div>
         </div>
 
-        <!--<div>{{model | json}}</div>
-        <div>{{model1 | json}}</div>-->
-        <!--<div>{{parseDPModel(model) | json}}</div>-->
-        <!--<div>{{currencies[0].Cur_DateStart.substring(0, 10) | json}}</div>
-        <div>{{currencies[0].Cur_DateEnd.substring(0, 10) | json}}</div>-->
+        <div class="form-group">
+          <div class="input-group">
+            <label style="margin-right: 15px">Select number: </label>
+            <input type="text" class="form-control"
+                   [(ngModel)]="number_currency" [ngModelOptions]="{standalone: true}"/>
+          </div>
+        </div>
         <div class="getInfo">
-          <button type="button" class="btn btn-primary" (click)="getCurrencies()">Get Info</button>
+          <button type="button" class="btn btn-primary" (click)="getCurrencies()" style="margin-left: 95px; width: 100px">Get Info</button>
         </div>
       </form>
 
     </div>
     <div class="col-lg-9">
-     <!--{{search}}-->
-      <!--{{currencies[0] | json}}-->
-      <h1>Current BLR Rate: {{currencies1.Cur_OfficialRate | json}}</h1>
+      <h2 >Current BLR Rate: {{answer}}</h2>
     </div>
   </div>
 
